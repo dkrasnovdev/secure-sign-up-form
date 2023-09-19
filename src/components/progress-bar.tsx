@@ -29,7 +29,7 @@ export default function ProgressBar({
   return (
     <div
       role="progressbar"
-      className="mb-9 h-1 w-full space-y-1 rounded bg-neutral-700"
+      className="mb-12 h-1 w-full space-y-1 rounded bg-neutral-700 sm:mb-9"
     >
       <div
         role="status"
