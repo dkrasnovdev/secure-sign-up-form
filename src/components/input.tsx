@@ -44,7 +44,7 @@ export default function Input<FormValues extends FieldValues = FieldValues>({
           'relative flex w-full items-center space-x-3 overflow-hidden rounded-lg border px-1.5 transition focus-within:ring',
           {
             'border-red-500 bg-red-500/10 ring-red-500': !!error,
-            'border-neutral-700 bg-neutral-900 ring-neutral-500': !error,
+            'border-neutral-700 bg-neutral-800 ring-neutral-500': !error,
           },
         )}
       >
@@ -80,7 +80,9 @@ export default function Input<FormValues extends FieldValues = FieldValues>({
         </button>
       </div>
       {!!error && displayError && (
-        <span className="w-full text-sm text-red-500">{error.message}</span>
+        <span className="w-full text-xs font-medium text-red-500">
+          {error.message}
+        </span>
       )}
     </>
   );

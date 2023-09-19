@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="mx-auto flex w-full max-w-lg flex-col items-center justify-center rounded-lg border-2 border-neutral-800 bg-neutral-900 p-5 lg:p-10">
+      <main className="mx-auto flex w-full max-w-lg flex-col items-center justify-center rounded-lg p-5 lg:p-10">
         <div className="flex flex-col items-center justify-center gap-1 pb-5">
           <Lock className="h-14 w-14 text-neutral-500" />
           <h2 className="text-xl font-medium">Secure Password</h2>
@@ -98,7 +98,7 @@ export default function Home() {
           />
           <button
             type="submit"
-            className="relative flex h-10 w-fit items-center justify-center rounded-lg border-2 border-neutral-800 bg-neutral-900 px-5 text-neutral-200 outline-none ring-neutral-500 hover:bg-neutral-800 focus:border-neutral-700 focus:bg-neutral-700 focus:ring disabled:pointer-events-none disabled:bg-neutral-800"
+            className="relative flex h-10 w-full items-center justify-center rounded-lg border-2 border-neutral-200 bg-neutral-200 px-5 text-sm font-medium text-neutral-900 outline-none ring-neutral-500 hover:border-neutral-300 hover:bg-neutral-300 focus:border-neutral-400 focus:bg-neutral-400 disabled:pointer-events-none disabled:opacity-50 sm:w-fit"
             disabled={isLoading}
           >
             Sign Up
