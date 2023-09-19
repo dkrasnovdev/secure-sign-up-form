@@ -29,7 +29,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [isSettled, setIsSettled] = useAtom(isSettledAtom);
-  const [_, setResult] = useAtom(resultAtom)
+  const [_, setResult] = useAtom(resultAtom);
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isRepeatVisible, setIsRepeatVisible] = useState(false);

@@ -15,16 +15,16 @@ export default function ProgressBar({
 
   const empty = !pwd;
   const weak = !!pwd && !!err;
-  const medium = !!pwd && !err && !specialChars;
-  const strong = !!pwd && !err && specialChars;
+  const medium = !!pwd && !err && !specialChars && isDirty;
+  const strong = !!pwd && !err && specialChars && isDirty;
 
   const message = empty
     ? 'The password must be at least 8 characters long and contain numbers and special characters (! “ # $ % ‘ () *)'
     : !!err
-      ? err.message
-      : medium
-        ? 'Not a bad password: but you can make a great one - add a couple of special characters (! “ # $ % ‘ () *)'
-        : 'Strong password';
+    ? err.message
+    : medium
+    ? 'Not a bad password: but you can make a great one - add a couple of special characters (! “ # $ % ‘ () *)'
+    : 'Strong password';
 
   return (
     <div
@@ -43,13 +43,13 @@ export default function ProgressBar({
       <p
         className={clsx('w-full text-xs font-medium', {
           'text-neutral-500': empty && !err,
-          'text-red-500': (weak || !!err) && isDirty,
+          'text-red-500': weak || !!err,
           'text-yellow-500': medium,
           'text-green-500': strong,
         })}
       >
         {message}
       </p>
-    </div >
+    </div>
   );
 }

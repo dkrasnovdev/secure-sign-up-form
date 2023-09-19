@@ -4,7 +4,7 @@ import { isSettledAtom, resultAtom } from '~/lib/atoms';
 
 export default function Result() {
   const [_, setIsSettled] = useAtom(isSettledAtom);
-  const [result] = useAtom(resultAtom)
+  const [result] = useAtom(resultAtom);
 
   if (!result) return null;
   return (
