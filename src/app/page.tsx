@@ -71,24 +71,20 @@ export default function Home() {
               placeholder="Username"
               displayError
             />
-            <div className="w-full min-w-full space-y-2.5 pb-2.5">
-              <Input
-                name="pwd"
-                label="Password"
-                control={control}
-                placeholder="Password"
-                type="password"
-                isVisible={isPasswordVisible}
-                onEyeClick={() => setIsPasswordVisible((current) => !current)}
-              />
-              <div className="h-10">
-                <ProgressBar
-                  pwd={watch('pwd')}
-                  err={errors.pwd}
-                  isDirty={isDirty}
-                />
-              </div>
-            </div>
+            <Input
+              name="pwd"
+              label="Password"
+              control={control}
+              placeholder="Password"
+              type="password"
+              isVisible={isPasswordVisible}
+              onEyeClick={() => setIsPasswordVisible((current) => !current)}
+            />
+            <ProgressBar
+              pwd={watch('pwd')}
+              err={errors.pwd}
+              isDirty={isDirty}
+            />
             <Input
               name="repeat"
               label="Repeat password"
