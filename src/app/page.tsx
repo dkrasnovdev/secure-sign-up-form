@@ -6,10 +6,10 @@ import { z } from 'zod';
 import Input from '~/components/input';
 import Lock from '~/components/lock';
 import ProgressBar from '~/components/progress-bar';
-import { passwordValidationSchema } from '~/schemas/password-validation';
+import { signUpValidationSchema } from '~/schemas/sign-up-validation';
 import { createAccount } from './actions';
 
-type PasswordValidation = z.infer<typeof passwordValidationSchema>;
+type SignUpValidation = z.infer<typeof signUpValidationSchema>;
 
 export default function Home() {
   const {
@@ -17,10 +17,10 @@ export default function Home() {
     handleSubmit,
     formState: { errors, isDirty },
     watch,
-  } = useForm<PasswordValidation>({
+  } = useForm<SignUpValidation>({
     mode: 'onChange',
     reValidateMode: 'onChange',
-    resolver: zodResolver(passwordValidationSchema),
+    resolver: zodResolver(signUpValidationSchema),
     defaultValues: {
       username: '',
       pwd: '',
@@ -61,6 +61,7 @@ export default function Home() {
               label="Password"
               control={control}
               placeholder="Password"
+              type="password"
             />
             <div className="h-10">
               <ProgressBar
@@ -75,11 +76,12 @@ export default function Home() {
             label="Repeat password"
             control={control}
             placeholder="Repeat Password"
+            type="password"
             displayError
           />
           <button
             type="submit"
-            className="relative flex h-10 w-fit items-center justify-center rounded-lg border-2 border-neutral-800 bg-neutral-900 px-5 text-white outline-none ring-neutral-500 hover:bg-neutral-800 focus:ring"
+            className="text-neutral-200 relative flex h-10 w-fit items-center justify-center rounded-lg border-2 border-neutral-800 bg-neutral-900 px-5 outline-none ring-neutral-500 hover:bg-neutral-800 focus:ring"
           >
             Sign Up
           </button>

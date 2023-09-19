@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { getMissingLengthString } from '~/lib/dict';
 
-const passwordValidationSchema = z
+const signUpValidationSchema = z
   .object({
     username: z.string().min(1, {
       message: 'Username is required',
@@ -98,7 +98,7 @@ const passwordValidationSchema = z
         minimum: 8,
         type: 'string',
         inclusive: true,
-        message: 'Weak password: add at least one digit',
+        message: 'Weak password: add a digit',
         path: ['pwd'],
       });
     }
@@ -114,4 +114,4 @@ const passwordValidationSchema = z
     }
   });
 
-export { passwordValidationSchema };
+export { signUpValidationSchema };
