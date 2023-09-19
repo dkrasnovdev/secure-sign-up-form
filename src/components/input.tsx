@@ -5,18 +5,23 @@ import {
   useController,
   UseControllerProps,
 } from 'react-hook-form';
+import { EyeOff, EyeOn } from './eyes';
 
 interface InputProps<FormValues extends FieldValues = FieldValues>
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'defaultValue'>,
     UseControllerProps<FormValues> {
   label: string;
   displayError?: boolean;
+  isVisible?: boolean;
+  onEyeClick?: () => void;
 }
 
 export default function Input<FormValues extends FieldValues = FieldValues>({
   name,
   label,
   displayError,
+  isVisible,
+  onEyeClick,
   control,
   rules,
   shouldUnregister,
@@ -53,7 +58,26 @@ export default function Input<FormValues extends FieldValues = FieldValues>({
           onBlur={field.onBlur}
           onChange={field.onChange}
           ref={field.ref}
+          type={
+            inputProps.type === 'password'
+              ? isVisible
+                ? 'text'
+                : 'password'
+              : inputProps.type
+          }
         />
+        <button
+          type="button"
+          className="absolute right-5 h-fit w-fit cursor-pointer outline-none"
+          onClick={onEyeClick}
+        >
+          {inputProps.type === 'password' &&
+            (isVisible ? (
+              <EyeOff className="h-6 w-6 cursor-pointer text-neutral-500 transition-opacity duration-300 hover:opacity-50" />
+            ) : (
+              <EyeOn className="h-6 w-6 cursor-pointer text-neutral-500 transition-opacity duration-300 hover:opacity-50" />
+            ))}
+        </button>
       </div>
       {!!error && displayError && (
         <span className="w-full text-sm text-red-500">{error.message}</span>

@@ -7,7 +7,9 @@ const signUpValidationSchema = z
       message: 'Username is required',
     }),
     pwd: z.string(),
-    repeat: z.string(),
+    repeat: z.string().min(1, {
+      message: 'Required',
+    }),
   })
   .superRefine((value, ctx) => {
     const length = getMissingLengthString(value.pwd.length);

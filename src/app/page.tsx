@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import Input from '~/components/input';
@@ -11,25 +12,37 @@ import { createAccount } from './actions';
 
 type SignUpValidation = z.infer<typeof signUpValidationSchema>;
 
+const defaultValues: SignUpValidation = {
+  username: '',
+  pwd: '',
+  repeat: '',
+};
+
 export default function Home() {
   const {
     control,
     handleSubmit,
     formState: { errors, isDirty },
     watch,
+    setValue,
   } = useForm<SignUpValidation>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: zodResolver(signUpValidationSchema),
-    defaultValues: {
-      username: '',
-      pwd: '',
-      repeat: '',
-    },
+    defaultValues,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isRepeatVisible, setIsRepeatVisible] = useState(false);
+
   const onSubmit = handleSubmit(async ({ repeat }) => {
-    await createAccount(repeat);
+    setIsLoading(true);
+    const [{ salt, password }] = await Promise.all([
+      await createAccount(repeat),
+      await new Promise((resolve) => setTimeout(resolve, 800)),
+    ]);
+    setIsLoading(false);
   });
 
   return (
@@ -62,6 +75,8 @@ export default function Home() {
               control={control}
               placeholder="Password"
               type="password"
+              isVisible={isPasswordVisible}
+              onEyeClick={() => setIsPasswordVisible((current) => !current)}
             />
             <div className="h-10">
               <ProgressBar
@@ -78,10 +93,13 @@ export default function Home() {
             placeholder="Repeat Password"
             type="password"
             displayError
+            isVisible={isRepeatVisible}
+            onEyeClick={() => setIsRepeatVisible((current) => !current)}
           />
           <button
             type="submit"
-            className="text-neutral-200 relative flex h-10 w-fit items-center justify-center rounded-lg border-2 border-neutral-800 bg-neutral-900 px-5 outline-none ring-neutral-500 hover:bg-neutral-800 focus:ring"
+            className="relative flex h-10 w-fit items-center justify-center rounded-lg border-2 border-neutral-800 bg-neutral-900 px-5 text-neutral-200 outline-none ring-neutral-500 hover:bg-neutral-800 focus:border-neutral-700 focus:bg-neutral-700 focus:ring disabled:pointer-events-none disabled:bg-neutral-800"
+            disabled={isLoading}
           >
             Sign Up
           </button>

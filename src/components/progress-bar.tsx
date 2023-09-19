@@ -41,8 +41,8 @@ export default function ProgressBar({
         })}
       ></div>
       <p
-        className={clsx('w-full text-sm font-medium', {
-          'text-neutral-500': empty && !err,
+        className={clsx('w-full text-xs font-medium', {
+          'text-neutral-500': empty && !err && !isDirty,
           'text-red-500': weak || !!err,
           'text-yellow-500': medium,
           'text-green-500': strong,
