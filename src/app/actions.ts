@@ -15,13 +15,15 @@ const createAccount = async ({
 
   // Censor the 'salt' and 'hash' for displaying
   // Should not be used in practice, instead write it to your database
-  const censoredSalt = salt.slice(0, -(salt.length / 2)) + '*'.repeat(salt.length / 2);
-  const censoredHash = hash.slice(0, -(hash.length / 2)) + '*'.repeat(hash.length / 2);
+  const censoredSalt =
+    salt.slice(0, -(salt.length / 2)) + '*'.repeat(salt.length / 2);
+  const censoredHash =
+    hash.slice(0, -(hash.length / 2)) + '*'.repeat(hash.length / 2);
 
   return {
     username,
     salt: censoredSalt,
-    hash: censoredHash
+    hash: censoredHash,
   };
 };
 

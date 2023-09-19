@@ -10,9 +10,10 @@ export default function Result() {
   return (
     <div className="max-w-full space-y-2.5">
       <div className="flex w-full flex-col gap-2.5 rounded-lg border-2 border-neutral-800 p-5">
-        <p className="border-b border-neutral-800 pb-2.5 italic text-neutral-300 text-xs">
-          Your credentials are not stored anywhere on the server.
-          However, in a real-world scenario, you can store hash alongside salt in your database.
+        <p className="border-b border-neutral-800 pb-2.5 text-xs italic text-neutral-300">
+          Your credentials are not stored anywhere on the server. However, in a
+          real-world scenario, you can store hash alongside salt in your
+          database.
         </p>
         <pre>{JSON.stringify(result, null, 2)}</pre>
       </div>

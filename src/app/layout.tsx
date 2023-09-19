@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Secure Sign Up Form | dkrasnov.dev',
-  description: '',
+  description:
+    'Learn how to build airtight registration forms using React, React Hook Form, Zod, and Next.js Server Actions. Enhance your web development skills and create robust, protected sign-up experiences.',
 };
 
 export default function RootLayout({

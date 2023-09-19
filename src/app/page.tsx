@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAtom } from 'jotai';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -105,6 +106,15 @@ export default function Home() {
             </button>
           </form>
         )}
+        <footer className="absolute bottom-5">
+          <Link
+            href="https://github.com/dkrasnovdev/secure-sign-up-form"
+            target="_blank"
+            className="rounded-lg p-1 text-sm font-medium text-neutral-600 outline-none ring-neutral-500 transition-colors hover:text-neutral-300 focus:text-neutral-500 focus:ring"
+          >
+            GitHub
+          </Link>
+        </footer>
       </main>
     </>
   );
