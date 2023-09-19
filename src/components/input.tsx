@@ -67,18 +67,19 @@ export default function Input<FormValues extends FieldValues = FieldValues>({
               : inputProps.type
           }
         />
-        <button
-          type="button"
-          className="absolute right-5 h-fit w-fit cursor-pointer outline-none"
-          onClick={onEyeClick}
-        >
-          {inputProps.type === 'password' &&
-            (isVisible ? (
+        {inputProps.type === 'password' && (
+          <button
+            type="button"
+            className="absolute right-5 h-fit w-fit cursor-pointer rounded-lg outline-none ring-neutral-500 focus:ring"
+            onClick={onEyeClick}
+          >
+            {isVisible ? (
               <EyeOff className="h-6 w-6 cursor-pointer text-neutral-500 transition-opacity duration-300 hover:opacity-50" />
             ) : (
               <EyeOn className="h-6 w-6 cursor-pointer text-neutral-500 transition-opacity duration-300 hover:opacity-50" />
-            ))}
-        </button>
+            )}
+          </button>
+        )}
       </div>
       {!!error && displayError && (
         <span className="w-full text-xs font-medium text-red-500">

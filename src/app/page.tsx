@@ -34,10 +34,10 @@ export default function Home() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isRepeatVisible, setIsRepeatVisible] = useState(false);
 
-  const onSubmit = handleSubmit(async ({ confirm_password }) => {
+  const onSubmit = handleSubmit(async ({ username, password }) => {
     setIsLoading(true);
     const [res] = await Promise.all([
-      await createAccount(confirm_password),
+      await createAccount({ username, password }),
       await new Promise((resolve) => setTimeout(resolve, 800)),
     ]);
     setResult(res);
