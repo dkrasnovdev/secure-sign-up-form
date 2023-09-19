@@ -48,11 +48,12 @@ export default function Input<FormValues extends FieldValues = FieldValues>({
           },
         )}
       >
-        <label htmlFor={label} className="sr-only">
-          {label}
+        <label htmlFor={name}>
+          <span className="sr-only">{name}</span>
         </label>
         <input
           {...inputProps}
+          id={name}
           className="h-10 w-full bg-transparent py-3 font-medium placeholder:text-neutral-500 focus:outline-none"
           defaultValue={field.value ?? undefined}
           onBlur={field.onBlur}

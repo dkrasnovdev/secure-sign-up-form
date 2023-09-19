@@ -6,7 +6,7 @@ const signUpValidationSchema = z
     username: z.string({
       required_error: 'Username is required',
     }),
-    pwd: z.string().superRefine((value, ctx) => {
+    password: z.string().superRefine((value, ctx) => {
       const length = getMissingLengthString(value.length);
       if (
         value.length < 8 &&
@@ -84,16 +84,16 @@ const signUpValidationSchema = z
         });
       }
     }),
-    repeat: z.string().min(1, {
+    confirm_password: z.string().min(1, {
       message: 'Required',
     }),
   })
   .superRefine((value, ctx) => {
-    if (value.pwd != value.repeat) {
+    if (value.password != value.confirm_password) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: 'Passwords do not match',
-        path: ['repeat'],
+        path: ['confirm_password'],
       });
     }
   });

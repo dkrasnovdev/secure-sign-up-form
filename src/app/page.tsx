@@ -34,10 +34,10 @@ export default function Home() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isRepeatVisible, setIsRepeatVisible] = useState(false);
 
-  const onSubmit = handleSubmit(async ({ repeat }) => {
+  const onSubmit = handleSubmit(async ({ confirm_password }) => {
     setIsLoading(true);
     const [res] = await Promise.all([
-      await createAccount(repeat),
+      await createAccount(confirm_password),
       await new Promise((resolve) => setTimeout(resolve, 800)),
     ]);
     setResult(res);
@@ -70,9 +70,10 @@ export default function Home() {
               control={control}
               placeholder="Username"
               displayError
+              autoComplete="off"
             />
             <Input
-              name="pwd"
+              name="password"
               label="Password"
               control={control}
               placeholder="Password"
@@ -81,12 +82,12 @@ export default function Home() {
               onEyeClick={() => setIsPasswordVisible((current) => !current)}
             />
             <ProgressBar
-              pwd={watch('pwd')}
-              err={errors.pwd}
+              pwd={watch('password')}
+              err={errors.password}
               isDirty={isDirty}
             />
             <Input
-              name="repeat"
+              name="confirm_password"
               label="Repeat password"
               control={control}
               placeholder="Repeat Password"
