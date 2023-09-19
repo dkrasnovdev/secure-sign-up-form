@@ -15,15 +15,15 @@ export default function Result() {
         </p>
         <pre>{JSON.stringify(result, null, 2)}</pre>
       </div>
-      <div className="flex w-full flex-row gap-2.5">
+      <div className="mt-2.5 flex w-full flex-col gap-2.5 sm:flex-row">
         <Link
           href="/"
-          className="pointer-events-none relative flex h-10 w-full items-center justify-center rounded-lg border-2 border-green-600 bg-green-600 px-5 text-sm font-medium text-neutral-100 opacity-50 outline-none ring-neutral-500 hover:border-neutral-300 hover:bg-neutral-300 focus:border-neutral-400 focus:bg-neutral-400 disabled:pointer-events-none disabled:opacity-50 sm:w-1/2"
+          className="pointer-events-none relative flex h-10 w-full items-center justify-center rounded-lg border-2 border-green-600 bg-green-600 px-5 text-center text-sm font-medium text-neutral-100 opacity-50 outline-none ring-neutral-500 hover:border-neutral-300 hover:bg-neutral-300 focus:border-neutral-400 focus:bg-neutral-400 disabled:pointer-events-none disabled:opacity-50 sm:w-1/2"
         >
           Open Tutorial (Soon)
         </Link>
         <button
-          className="relative flex h-10 w-full items-center justify-center rounded-lg border-2 border-neutral-200 bg-neutral-200 px-5 text-sm font-medium text-neutral-900 outline-none ring-neutral-500 hover:border-neutral-300 hover:bg-neutral-300 focus:border-neutral-400 focus:bg-neutral-400 disabled:pointer-events-none disabled:opacity-50 sm:w-1/2"
+          className="relative flex h-10 w-full items-center justify-center rounded-lg border-2 border-neutral-200 bg-neutral-200 px-5 text-center text-sm font-medium text-neutral-900 outline-none ring-neutral-500 hover:border-neutral-300 hover:bg-neutral-300 focus:border-neutral-400 focus:bg-neutral-400 disabled:pointer-events-none disabled:opacity-50 sm:w-1/2"
           onClick={() => setIsSettled(false)}
         >
           Reset
