@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { getRequiredLength } from "~/lib/dict";
+import { getMissingLength } from "~/lib/dict";
 
 const passwordValidationSchema = z
   .object({
@@ -7,7 +7,7 @@ const passwordValidationSchema = z
     repeat: z.string(),
   })
   .superRefine((value, ctx) => {
-    const length = getRequiredLength(value.pwd.length);
+    const length = getMissingLength(value.pwd.length);
     if (
       value.pwd.length < 8 &&
       value.pwd.toLowerCase() == value.pwd &&
