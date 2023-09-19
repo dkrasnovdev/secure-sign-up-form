@@ -1,6 +1,7 @@
-const getMissingLength = (length: number) => {
-  const symbol = 8 - length === 1 ? "symbol" : "symbols";
-  return `${8 - length} more ${symbol}`;
+const getMissingLengthString = (length: number) => {
+  const missingLength = 8 - length;
+  const character = missingLength === 1 ? 'character' : 'characters';
+  return `${missingLength} more ${character}`;
 };
 
-export { getMissingLength };
+export { getMissingLengthString };
